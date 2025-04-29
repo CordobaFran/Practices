@@ -21,6 +21,10 @@ const DATOS_RND = [
     }
 ]
 
+const DATOS_RND1 = [
+
+]
+
 const NOMBRES = []
 
 DATOS_RND.forEach((pers) => {
@@ -39,9 +43,51 @@ let prom
 
 //prom = anioDat.reduce((prev,act)=> prev+act,0) / anioDat.length
 
-prom = DATOS_RND.nombre
+// PROMEDIO DE AÑOS EN UNA FX
+function promedio_anios(dataProm) {
+    let tempData = dataProm.map((data) => data.año)
+    //valida si el array tiene 1 solo dato y no dividir por 0
+    if (tempData.length !== 0) {
+        return tempData.reduce((prev, act) => prev + act, 0) / tempData.length
+    } else {
+        return tempData
+    }
+}
 
-console.log(prom);
+console.log(promedio_anios(DATOS_RND));
+console.log(promedio_anios(DATOS_RND));
+console.clear()
+
+function buscador_nombre(datos, nombre) {
+    let temp = datos.find((el) => el.nombre === nombre)
+
+    if (temp) {
+        return temp
+    } else {
+        return "no se encontró el nombre"
+    }
+}
+
+console.log(buscador_nombre(DATOS_RND, "Franco"));
+console.log(buscador_nombre(DATOS_RND, "Fra"));
+console.clear()
+
+//math
+
+function mayor(data) {
+
+    let anios = data.map((el) => el.año)
+    let max = Math.max(...anios)
+    let newData = data[anios.indexOf(max)]
+
+    return newData
+}
+
+console.log(mayor(DATOS_RND));
+
+
+
+
 
 
 

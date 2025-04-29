@@ -1,0 +1,150 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+.header-navbar nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+  width: 100%;
+  background-color: antiquewhite;
+  height: 80px;
+  margin-bottom: 50px;
+}
+.header-navbar nav ul li {
+  list-style: none;
+  margin-left: 20px;
+}
+.header-navbar nav ul li a {
+  text-decoration: none;
+  color: black;
+}
+
+.body-calculator {
+  display: flex;
+  flex-direction: column;
+}
+.body-calculator h1 {
+  text-align: center;
+  margin: 20px auto;
+}
+.body-calculator .div-calculatorBody {
+  display: flex;
+  flex-direction: column;
+  background-color: gray;
+  width: 350px;
+  height: 500px;
+  margin: auto auto;
+  border-top: 10px solid #e9e9e9;
+  border-right: 10px solid #a1a1a1;
+  border-bottom: 10px solid #6e6e6e;
+  border-left: 10px solid #cecece;
+}
+.body-calculator .div-calculatorBody .div-commandView {
+  background-color: white;
+  width: 300px;
+  height: 100px;
+  margin: 20px auto;
+  box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.49) inset;
+  -webkit-box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.49) inset;
+  -moz-box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.49) inset;
+  display: flex;
+  flex-direction: column;
+}
+.body-calculator .div-calculatorBody .div-commandView textarea {
+  resize: none;
+  width: 100%;
+  height: 40px;
+  background-color: rgba(72, 225, 255, 0.1607843137);
+  border: none;
+  text-align: right;
+  vertical-align: middle;
+  font-size: 24px;
+  align-content: center;
+  padding: 0px 20px;
+}
+.body-calculator .div-calculatorBody .div-buttons {
+  display: grid;
+  margin: 20px 30px;
+  height: 100%;
+  gap: 10px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-areas: "C     div   mult min" "seven eight nine plus" "four  five  six  plus" "one   two  three eq" "zero  zero  dot  eq";
+}
+.body-calculator .div-calculatorBody .div-buttons button {
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.49);
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.49);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.49);
+  border-top: 5px solid #e9e9e9;
+  border-right: 5px solid #a1a1a1;
+  border-bottom: 5px solid #6e6e6e;
+  border-left: 5px solid #cecece;
+  background: #e2e2e2;
+}
+.body-calculator .div-calculatorBody .div-buttons button:active {
+  border-top: 5px solid #6e6e6e;
+  border-right: 5px solid #cecece;
+  border-bottom: 5px solid #e9e9e9;
+  border-left: 5px solid #a1a1a1;
+  background: #e2e2e2;
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.49);
+  -webkit-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.49);
+  -moz-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.49);
+}
+.body-calculator .div-calculatorBody .div-buttons .misc {
+  grid-area: C;
+}
+.body-calculator .div-calculatorBody .div-buttons .divi {
+  grid-area: div;
+}
+.body-calculator .div-calculatorBody .div-buttons .mult {
+  grid-area: mult;
+}
+.body-calculator .div-calculatorBody .div-buttons .min {
+  grid-area: min;
+}
+.body-calculator .div-calculatorBody .div-buttons .plus {
+  grid-area: plus;
+}
+.body-calculator .div-calculatorBody .div-buttons .equal {
+  grid-area: eq;
+}
+.body-calculator .div-calculatorBody .div-buttons .zero {
+  grid-area: zero;
+}
+.body-calculator .div-calculatorBody .div-buttons .one {
+  grid-area: one;
+}
+.body-calculator .div-calculatorBody .div-buttons .two {
+  grid-area: two;
+}
+.body-calculator .div-calculatorBody .div-buttons .three {
+  grid-area: three;
+}
+.body-calculator .div-calculatorBody .div-buttons .four {
+  grid-area: four;
+}
+.body-calculator .div-calculatorBody .div-buttons .five {
+  grid-area: five;
+}
+.body-calculator .div-calculatorBody .div-buttons .six {
+  grid-area: six;
+}
+.body-calculator .div-calculatorBody .div-buttons .seven {
+  grid-area: seven;
+}
+.body-calculator .div-calculatorBody .div-buttons .eight {
+  grid-area: eight;
+}
+.body-calculator .div-calculatorBody .div-buttons .nine {
+  grid-area: nine;
+}
+.body-calculator .div-calculatorBody .div-buttons .dot {
+  grid-area: dot;
+}
+
+/*# sourceMappingURL=style.css.map */
