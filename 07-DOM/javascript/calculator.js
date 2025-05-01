@@ -1,4 +1,50 @@
-let num1 = 0
+// escribir los numeros y que aparezcan en la pantalla
+// al apretar un numero tiene que llegar como numero y no string
+// tengo que poder poner cada operador solo 1 vez entre numeros
+// si divido o multiplico puedo poner el - antes del numero
+// si resto no puedo poner otro - adelante del numero
+// si sumo y pongo un - para indicar numero negativo se tiene que reemplazar el + por un -
+
+let display = 0
+let displayGet = document.getElementById("write")
+let buttonNumPress = document.querySelectorAll(".num")
+let operPress = document.querySelectorAll(".oper")
+
+displayGet.innerText = 0
+
+const refreshScreen = (calc)=> {
+    return displayGet.innerText = calc
+}
+
+buttonNumPress.forEach((el)=>{
+    el.addEventListener("click", (el)=>{
+        if (display != 0) {
+            display = parseFloat(display + el.target.innerText)
+            refreshScreen(display)
+            console.log(display);
+        } else {
+            display = el.target.innerText
+            refreshScreen(display)
+        }
+    })
+})
+
+//to review
+operPress.forEach((el)=>{
+    el.addEventListener("click", (el)=>{
+        oper = el.target.innerText
+        display = display + oper
+        
+        refreshScreen(display)
+        console.log(display);
+    })
+})
+
+
+
+
+
+/* let num1 = 0
 let num2 = 0
 let operator
 
@@ -47,5 +93,5 @@ solve.addEventListener("click", () => {
 
 
 
-let plusButton = document.getElementById("plus")
+let plusButton = document.getElementById("plus") */
 
