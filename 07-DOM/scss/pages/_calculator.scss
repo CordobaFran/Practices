@@ -1,4 +1,6 @@
 @import url('https://fonts.cdnfonts.com/css/lcd');
+@import url('https://fonts.cdnfonts.com/css/digital-7-mono');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 .body-calculator{
     display: flex;
@@ -17,42 +19,82 @@
         height: 500px;
         margin: auto auto;
 
+        border-radius: 5px;
         border-top: 10px solid #e9e9e9;
         border-right: 10px solid #a1a1a1;
         border-bottom: 10px solid #6e6e6e;
         border-left: 10px solid #cecece;
 
-        .div-commandView {
-            background-color: white;
-            width: 300px;
-            height: 100px;
-            margin: 20px auto;
+        box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.49) ;
+        -webkit-box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.49) ;
+        -moz-box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.49) ;
 
+        .div-commandView {
+            //background-color: white;
+            width: 310px;
+            height: 110px;
+            margin: 20px auto;
+            background-color: #1d3422;
+            border-radius: 2px;
+
+            border-top: 5px solid #a1a1a1;
+            border-right: 5px solid #6e6e6e;
+            border-bottom: 5px solid #a1a1a1;
+            border-left: 5px solid #6e6e6e;
+            
             box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.49) inset;
             -webkit-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.49) inset;
             -moz-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.49) inset;
 
             display: flex;
             flex-direction: column;
+
             textarea {
                 //font-family: 'LCD', sans-serif;
                 //font-family: 'LCD2', sans-serif;
                 //font-family: 'LCDMono2', sans-serif;
-                font-family: 'LCDMono', sans-serif;
+                //font-family: 'LCDMono', sans-serif;
+                font-family: 'Digital-7 Mono', sans-serif;
                 //font-family: 'Digitalism', sans-serif;
                 resize: none;
                 width: 100%;
-                height: 40px;
-                background-color: #48e1ff29;
+                height: 30px;
+                background-color: #1d342200;
+                color: #02a268;
                 border: none;
                 text-align: right;
                 vertical-align: middle;
                 font-size: 24px;
                 align-content: center;
                 padding: 0px 20px;
+                letter-spacing: 0.2rem;
+                position: absolute;
+                width: 300px;
+                overflow-y: hidden;
+
                 &#result {
+                    position: relative;
+                    top: 30px;
+                    width: 300px;
+                    height: 40px;
                     font-size: 32px;
                 }
+
+                &#backgroundwr {
+                    color: rgba(39, 255, 35, 0.06);
+                    position: absolute;
+                    width: 300px;
+                    height: 30px;
+                }
+
+                &#backgroundre {
+                    color: rgba(39, 255, 35, 0.06);
+                    position: absolute;
+                    width: 300px;
+                    height: 100px;
+                    font-size: 32px;
+                }
+                
             }
             
         }
@@ -76,11 +118,18 @@
                 -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.49);
                 -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.49);
 
+                border-radius: 5px;
                 border-top: 5px solid #e9e9e9;
                 border-right: 5px solid #a1a1a1;
                 border-bottom: 5px solid #6e6e6e;
                 border-left: 5px solid #cecece;
                 background: #e2e2e2;
+
+                font-family: "Roboto", sans-serif;
+                font-optical-sizing: auto;
+                font-weight: 800;
+                font-style: normal;
+                font-size: 18px;
 
                 &:active {
                     border-top: 5px solid #6e6e6e;
