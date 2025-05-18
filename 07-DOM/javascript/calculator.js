@@ -8,6 +8,10 @@
 let display = 0;
 let num1 = 0, num2 = 0, operator = "", partialResult = 0, numSw = 1;
 
+document.getElementById("back").addEventListener("click", () => {
+  history.back();
+});
+
 let displayGet = document.getElementById("write");
 let displayResultGet = document.getElementById("result");
 

@@ -13,7 +13,11 @@
             li {
                 list-style: none;
                 margin-left: 20px;
-                a {
+                a { 
+                    &:hover{
+                        cursor: pointer;
+                        color: gray;
+                    }
                     text-decoration: none;
                     color: black;
                 }

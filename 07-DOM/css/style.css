@@ -25,6 +25,10 @@
   text-decoration: none;
   color: black;
 }
+.header-navbar nav ul li a:hover {
+  cursor: pointer;
+  color: gray;
+}
 
 .body-calculator {
   display: flex;

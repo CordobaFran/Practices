@@ -19,6 +19,22 @@ h1 {
   width: 90%;
 }
 
+header nav {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  height: 50px;
+  background-color: bisque;
+}
+header nav li {
+  margin: auto 20px;
+  text-decoration: none;
+  list-style: none;
+}
+header nav li a {
+  cursor: pointer;
+}
+
 .div-card {
   width: 200px;
   height: 320px;
@@ -52,6 +68,23 @@ h1 {
 }
 .div-card .button-addProduct {
   padding: 5px 5px;
+}
+
+.section_cart h2 {
+  margin: 20px auto;
+  text-align: center;
+}
+.section_cart #cart h2 {
+  text-align: center;
+}
+.section_cart #cart table {
+  width: 60%;
+  margin: auto auto;
+  padding: 10px;
+}
+.section_cart #cart table th {
+  border: 1px solid black;
+  padding: 5px 20px;
 }
 
 /*# sourceMappingURL=style.css.map */

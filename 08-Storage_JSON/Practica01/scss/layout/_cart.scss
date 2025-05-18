@@ -1,0 +1,21 @@
+.section_cart{
+    h2{
+        margin: 20px auto;
+        text-align: center;
+    }
+    #cart{
+        h2{
+            text-align: center;
+        }
+        table{
+            width: 60%;
+            // border: 1px solid black;
+            margin: auto auto;
+            padding: 10px;
+                th{
+                    border: 1px solid black;
+                    padding: 5px 20px;
+                }
+        }
+    }
+}
