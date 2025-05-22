@@ -5,6 +5,8 @@ let pressed = null
 
 // https://pokeapi.co/api/v2/pokemon/
 
+document.addEventListener("keydown", (el) => el.preventDefault())
+
 document.body.innerHTML = `
     <main>
         <section id="section_pokedex">
@@ -23,6 +25,10 @@ document.body.innerHTML = `
                                 <p>OWN</p>
                                 <p>251</p>
                             </div>
+                        </div>
+                        <div id="arrows">
+                            <img src="./assets/dir_arrow.png" id="arrowUp">
+                            <img src="./assets/dir_arrow.png" id="arrowDn">
                         </div>
                         <ul id="pokedex_names">
                         </ul>
@@ -58,36 +64,36 @@ let btnRight = document.getElementById("right")
 let inputNumPokedex = document.getElementById("input_num-pokedex")
 let pkdxNames = document.getElementById("pokedex_names")
 
-imgTag.src = renderImg(1)
-
+renderImg(1)
+// imgTag.src = renderImg(1)
 
 btnUp.addEventListener("mousedown", () => arrowKeys("up"))
 btnUp.addEventListener("mouseup", () => arrowKeys("stop"))
-document.addEventListener("keydown", (ev)=>{
-        ev.key === "ArrowUp" ? arrowKeys("up") : null;
-        arrowKeys("stop")
+document.addEventListener("keydown", (ev) => {
+    ev.key === "ArrowUp" ? arrowKeys("up") : null;
+    arrowKeys("stop")
 })
 
 btnDown.addEventListener("mousedown", () => arrowKeys("down"))
 btnDown.addEventListener("mouseup", () => arrowKeys("stop"))
-document.addEventListener("keydown", (ev)=>{
-        ev.key === "ArrowDown" ? arrowKeys("down") : null;
-        arrowKeys("stop")
+document.addEventListener("keydown", (ev) => {
+    ev.key === "ArrowDown" ? arrowKeys("down") : null;
+    arrowKeys("stop")
 })
 
 
 btnLeft.addEventListener("mousedown", () => arrowKeys("left"))
 btnLeft.addEventListener("mouseup", () => arrowKeys("stop"))
-document.addEventListener("keydown", (ev)=>{
-        ev.key === "ArrowLeft" ? arrowKeys("left") : null;
-        arrowKeys("stop")
+document.addEventListener("keydown", (ev) => {
+    ev.key === "ArrowLeft" ? arrowKeys("left") : null;
+    arrowKeys("stop")
 })
 
-btnRight.addEventListener("mousedown", () => {arrowKeys("right")})
+btnRight.addEventListener("mousedown", () => { arrowKeys("right") })
 btnRight.addEventListener("mouseup", () => arrowKeys("stop"))
-document.addEventListener("keydown", (ev)=>{
-        ev.key === "ArrowRight" ? arrowKeys("right") : null;
-        arrowKeys("stop")
+document.addEventListener("keydown", (ev) => {
+    ev.key === "ArrowRight" ? arrowKeys("right") : null;
+    arrowKeys("stop")
 })
 
 inputNumPokedex.addEventListener("change", (el) => {
@@ -95,13 +101,14 @@ inputNumPokedex.addEventListener("change", (el) => {
     renderImg(el.target.value)
 })
 
-
 function arrowKeys(key, event) {
 
     const leftKey = () => {
         const doOnce = () => {
-            pkmNumber > 6 ? pkmNumber -= 6 : pkmNumber = 1
-            renderImg(pkmNumber)
+            if (pkmNumber != 1) {
+                pkmNumber > 6 ? pkmNumber -= 6 : pkmNumber = 1
+                renderImg(pkmNumber)
+            }
         };
         doOnce()
 
@@ -112,8 +119,10 @@ function arrowKeys(key, event) {
 
     const rightKey = () => {
         const doOnce = () => {
-            pkmNumber < 245 ? pkmNumber += 6 : pkmNumber = 251
-            renderImg(pkmNumber)
+            if (pkmNumber != 251) {
+                pkmNumber < 245 ? pkmNumber += 6 : pkmNumber = 251
+                renderImg(pkmNumber)
+            }
         };
         doOnce()
 
@@ -123,13 +132,15 @@ function arrowKeys(key, event) {
     }
 
     const upKey = () => {
-        const doOnce = ()=>{
-            pkmNumber > 1 ? pkmNumber-- : null
-            renderImg(pkmNumber)
+        const doOnce = () => {
+            if (pkmNumber != 1) {
+                pkmNumber > 1 ? pkmNumber-- : null
+                renderImg(pkmNumber)
+            }
         }
         doOnce()
 
-        pressed = setInterval(()=>{
+        pressed = setInterval(() => {
             doOnce()
         }, 300)
 
@@ -137,8 +148,10 @@ function arrowKeys(key, event) {
 
     const downKey = () => {
         const doOnce = () => {
-            pkmNumber < 251 ? pkmNumber++ : null
-            renderImg(pkmNumber)
+            if (pkmNumber != 251) {
+                pkmNumber < 251 ? pkmNumber++ : null
+                renderImg(pkmNumber)
+            }
         }
         doOnce()
 
@@ -183,26 +196,34 @@ function renderImg(id = 1) {
 
         })
         .catch(err => {
-            return imgTag.src = "../assets/pkdx_notseen.png"
+            return imgTag.src = "./assets/pkdx_notseen.png"
         })
 }
 
-async function getPkmNames() {
+function getPkmNames() {
     return fetch(`https://pokeapi.co/api/v2/pokemon?limit=251`)
         .then(res => res.json())
         .then(data => {
             let names = []
             data.results.forEach((el, index) => {
-                const liNames = document.createElement("li")
-                liNames.textContent = el.name.toUpperCase()
-                liNames.value = index + 1
-                pkdxNames.appendChild(liNames)
+                const li = document.createElement("li")
+                const liNames = document.createElement("span")
+                // const liNum = document.createElement("span")
+                const liCaptured = document.createElement("img")
 
+                // liNum.textContent = (index + 1).toString().padStart(3, "0")
+                // li.appendChild(liNum)
+                liCaptured.src = "./assets/capturedBall.png"
+                liCaptured.id = "capturedImg"
+                liNames.textContent = el.name.toUpperCase()
+                liNames.id = "listName"
+                li.append(liCaptured)
+                li.append(liNames)
+                li.value = index + 1
+
+                pkdxNames.appendChild(li)
                 names.push({ name: el.name, url: el.url })
             });
-
-
-            // console.log(names);
         })
         .catch(err => console.log("error", err))
 }
@@ -210,15 +231,29 @@ async function getPkmNames() {
 function cursor(id = 1) {
 
     nodeNames = pkdxNames.querySelectorAll("li")
+    let cursorImg = document.createElement("img")
+    cursorImg.src = "./assets/cursor.png"
+    cursorImg.classList.add("cursor")
+    // cursorImg.id = "selected"
 
     nodeNames.forEach((el) => {
-        el.value === id ? el.id = "selected" : el.id = ""
+
+        el.id = ""
+
+        const noCursor = el.querySelector(".cursor")
+        if (noCursor) el.removeChild(noCursor)
+
+        if (el.value === id) {
+            el.id = "selected"
+            el.appendChild(cursorImg)
+        }
 
         if (id > 7) {
-            el.style = `top: ${(id - 7) * -22}px`
+            el.style = `top: ${(id - 7) * -21.28}px`
         } else {
             el.style = ""
         }
+
     })
 }
 
