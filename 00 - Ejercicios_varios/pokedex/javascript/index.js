@@ -63,17 +63,32 @@ imgTag.src = renderImg(1)
 
 btnUp.addEventListener("mousedown", () => arrowKeys("up"))
 btnUp.addEventListener("mouseup", () => arrowKeys("stop"))
-
+document.addEventListener("keydown", (ev)=>{
+        ev.key === "ArrowUp" ? arrowKeys("up") : null;
+        arrowKeys("stop")
+})
 
 btnDown.addEventListener("mousedown", () => arrowKeys("down"))
 btnDown.addEventListener("mouseup", () => arrowKeys("stop"))
+document.addEventListener("keydown", (ev)=>{
+        ev.key === "ArrowDown" ? arrowKeys("down") : null;
+        arrowKeys("stop")
+})
+
 
 btnLeft.addEventListener("mousedown", () => arrowKeys("left"))
 btnLeft.addEventListener("mouseup", () => arrowKeys("stop"))
+document.addEventListener("keydown", (ev)=>{
+        ev.key === "ArrowLeft" ? arrowKeys("left") : null;
+        arrowKeys("stop")
+})
 
-btnRight.addEventListener("mousedown", () => arrowKeys("right"))
+btnRight.addEventListener("mousedown", () => {arrowKeys("right")})
 btnRight.addEventListener("mouseup", () => arrowKeys("stop"))
-
+document.addEventListener("keydown", (ev)=>{
+        ev.key === "ArrowRight" ? arrowKeys("right") : null;
+        arrowKeys("stop")
+})
 
 inputNumPokedex.addEventListener("change", (el) => {
     pkmNumber = el.target.value
