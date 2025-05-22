@@ -49,6 +49,11 @@
   padding: 2px 1px;
   background-color: #000000;
 }
+#section_pokedex #div_background #div_screen #first_screen #sprite img {
+  width: 100%;
+  background-color: white;
+  object-fit: scale-down;
+}
 #section_pokedex #div_background #div_screen #first_screen #pokedex_seen-own {
   grid-column: 2/3;
   grid-row: 4/5;
@@ -140,6 +145,18 @@
   grid-column: 2/3;
   grid-row: 3/4;
   rotate: 180deg;
+}
+#section_pokedex #div_background #buttons #pokedex_controller #left {
+  width: 100%;
+  grid-column: 1/2;
+  grid-row: 2/3;
+  rotate: -90deg;
+}
+#section_pokedex #div_background #buttons #pokedex_controller #right {
+  width: 100%;
+  grid-column: 3/4;
+  grid-row: 2/3;
+  rotate: 90deg;
 }
 #section_pokedex #div_background input {
   grid-column: 2/3;
