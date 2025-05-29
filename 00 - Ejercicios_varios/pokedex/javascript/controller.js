@@ -16,7 +16,7 @@ function controller(screenEvent) {
         })
     }
 
-    const buttonDownListener = () => {
+    const buttonDownListener = async () => {
         btnDown.addEventListener("mousedown", () => arrowKeys("down", screenEvent.down))
         btnDown.addEventListener("mouseup", () => arrowKeys("stop"))
         document.addEventListener("keydown", (ev) => {
@@ -46,8 +46,7 @@ function controller(screenEvent) {
     buttonUpListener(), buttonDownListener(), buttonLeftListener(), buttonRightListener()
 }
 
-
-function arrowKeys(key, event) {
+async function arrowKeys(key, event) {
 
     const leftKey = () => {
         event()
