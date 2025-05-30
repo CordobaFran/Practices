@@ -1,17 +1,9 @@
-import { controller } from "./controller.js"
-import { buttonFunction, MainScreenBase, renderScreen } from "./screens/screen_main.js"
+import { screenDisplayed, render } from "./screenRender.js"
 
 // https://pokeapi.co/api/v2/pokemon/
+//https://www.spriters-resource.com/game_boy_gbc/pokemoncrystal/
 
 document.addEventListener("keydown", (el) => el.preventDefault())
 
-document.addEventListener("DOMContentLoaded", async ()=>{
-    document.body.innerHTML = MainScreenBase
-    const screen = renderScreen()
-    await screen.init()
-    
-    const buttons = buttonFunction(screen)
-    controller(buttons)
-})
 
-
+render(screenDisplayed)

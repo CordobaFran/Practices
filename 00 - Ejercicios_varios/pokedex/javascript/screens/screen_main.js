@@ -121,7 +121,13 @@ function renderScreen() {
         await renderImg()
     }
 
-    return { init, renderImg }
+    const clear = async () => {
+        const main =  document.getElementById("div_screen")
+        const consoleGB =  document.getElementById("div_background")
+        consoleGB.removeChild(main)
+    }
+
+    return { init, renderImg, clear }
 }
 
 function buttonFunction(screen) {
