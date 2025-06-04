@@ -1,9 +1,6 @@
 let MainScreenBase01 = `
-    <main>
-        <section id="section_pokedex">
-            <div id="div_background">
                 <div id="div_screen">
-                    <div id="first_screen">
+                    <div id="screen_description">
                         <div id="sprite">
                             <img src="" alt="" id="img_sprite">
                         </div>
@@ -27,18 +24,6 @@ let MainScreenBase01 = `
                         </div>
                     </div>
                 </div>
-                <div id="buttons">
-                    <div id="pokedex_controller">
-                        <button id="up">↑</button>
-                        <button id="down">↑</button>
-                        <button id="left">↑</button>
-                        <button id="right">↑</button>
-                    </div>
-                    <input type="text" placeholder="ingresar Nº" id="input_num-pokedex" hidden="true">
-                </div>
-            </div>
-        </section>
-    </main>
 `
 
 export { MainScreenBase01 }

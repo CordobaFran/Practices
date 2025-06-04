@@ -1,4 +1,5 @@
 let pkmNumber = 1
+let dataTransfer = []
 let MainScreenBase = `
     <main>
         <section id="section_pokedex">
@@ -34,6 +35,10 @@ let MainScreenBase = `
                         <button id="down">↑</button>
                         <button id="left">↑</button>
                         <button id="right">↑</button>
+                    </div>
+                    <div id="pokedex_buttonsAB">
+                        <button id="b">B</button>
+                        <button id="a">A</button>
                     </div>
                     <input type="text" placeholder="ingresar Nº" id="input_num-pokedex" hidden="true">
                 </div>
@@ -121,13 +126,33 @@ function renderScreen() {
         await renderImg()
     }
 
+    const load = async (fx) => {
+        console.log(fx);
+    }
+
     const clear = async () => {
-        const main =  document.getElementById("div_screen")
-        const consoleGB =  document.getElementById("div_background")
+        const main = document.getElementById("div_screen")
+        const consoleGB = document.getElementById("div_background")
         consoleGB.removeChild(main)
     }
 
-    return { init, renderImg, clear }
+    return { init, load, renderImg, clear }
+}
+
+async function data(params) {
+    let paramsToPush = await params
+    dataTransfer.push(paramsToPush)
+    return dataTransfer
+}
+
+async function idDetail(id = 1) {
+    try {
+        const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
+        const data = await res.json()
+        return data
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 function buttonFunction(screen) {
@@ -160,7 +185,17 @@ function buttonFunction(screen) {
         }
     };
 
-    return { up, down, left, right }
+    const a = async (fx) => {
+        // console.log(await data(idDetail(pkmNumber)));
+        screen.load(fx)
+        return await data(idDetail(pkmNumber)[0])
+    }
+
+    const b = async () => {
+        console.log("b");
+    }
+
+    return { up, down, left, right, a, b }
 }
 
-export { MainScreenBase, renderScreen, buttonFunction }
+export { MainScreenBase, renderScreen, buttonFunction, data }

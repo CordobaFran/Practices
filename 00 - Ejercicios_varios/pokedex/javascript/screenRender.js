@@ -1,5 +1,5 @@
 import { controller } from "./controller.js"
-import { buttonFunction, MainScreenBase, renderScreen } from "./screens/screen_main.js"
+import { buttonFunction, MainScreenBase, renderScreen, data } from "./screens/screen_main.js"
 import { MainScreenBase01 } from "./screens/screen_description.js"
 
 let display = 1
@@ -19,6 +19,8 @@ switch (display) {
         break;
 }
 
+renderScreen.load(render(screenDisplayed))
+
 function render(screenDisplayed) {
     document.addEventListener("DOMContentLoaded", async () => {
         document.body.innerHTML = screenDisplayed.MainScreenBase
@@ -27,6 +29,7 @@ function render(screenDisplayed) {
 
         const buttons = screenDisplayed.buttonFunction(screen)
         controller(buttons)
+        console.log(await data[0]);
     })
 }
 

@@ -6,6 +6,8 @@ function controller(screenEvent) {
     let btnDown = document.getElementById("down")
     let btnLeft = document.getElementById("left")
     let btnRight = document.getElementById("right")
+    let btnA = document.getElementById("a")
+    let btnB = document.getElementById("b")
 
     const buttonUpListener = () => {
         btnUp.addEventListener("mousedown", () => arrowKeys("up", screenEvent.up))
@@ -43,7 +45,23 @@ function controller(screenEvent) {
         })
     }
 
-    buttonUpListener(), buttonDownListener(), buttonLeftListener(), buttonRightListener()
+    const buttonAListener = () => {
+        let assignedA = "a"
+        btnA.addEventListener("click", () => { arrowKeys("a", screenEvent.a) })
+        document.addEventListener("keydown", (ev) => {
+            ev.key === assignedA ? arrowKeys("a", screenEvent.a) : null;
+        })
+    }
+
+    const buttonBListener = () => {
+        let assignedB = "s"
+        btnB.addEventListener("click", () => { arrowKeys("b", screenEvent.b) })
+        document.addEventListener("keydown", (ev) => {
+            ev.key === assignedB ? arrowKeys("b", screenEvent.a) : null;
+        })
+    }
+
+    buttonUpListener(), buttonDownListener(), buttonLeftListener(), buttonRightListener(), buttonAListener(), buttonBListener()
 }
 
 async function arrowKeys(key, event) {
@@ -77,6 +95,14 @@ async function arrowKeys(key, event) {
         }, 300)
     }
 
+    const aKey = () => {
+        event()
+    }
+
+    const bKey = () => {
+        event()
+    }
+    
     const stopFire = () => {
         clearInterval(pressed)
     }
@@ -94,6 +120,12 @@ async function arrowKeys(key, event) {
         case "down":
             downKey()
             break;
+        case "a":
+            aKey()
+            break;
+        case "b":
+            bKey()
+            break;
         case "stop":
             stopFire()
             break;
@@ -102,5 +134,6 @@ async function arrowKeys(key, event) {
             break;
     }
 }
+
 
 export { controller }
