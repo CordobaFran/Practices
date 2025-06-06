@@ -1,35 +1,35 @@
-import { controller } from "./controller.js"
-import { buttonFunction, MainScreenBase, renderScreen, data } from "./screens/screen_main.js"
+import { buttonFunction, MainScreenBase, renderScreen, idDetail } from "./screens/screen_main.js"
 import { MainScreenBase01 } from "./screens/screen_description.js"
 
 let display = 1
-let screenDisplayed = {}
+let screenDisplayedModule = {}
 
 // https://pokeapi.co/api/v2/pokemon/
 
-switch (display) {
-    case 1:
-        screenDisplayed = { buttonFunction, MainScreenBase, renderScreen }
-        break;
-    case 2:
-        screenDisplayed = { buttonFunction, MainScreenBase: MainScreenBase01, renderScreen }
-        break;
-
-    default:
-        break;
+function updateDisplay(newScreen){
+    display = newScreen
+    switch (display) {
+        case 1:
+            screenDisplayedModule = { buttonFunction, MainScreenBase, renderScreen }
+            break;
+        case 2:
+            screenDisplayedModule = { buttonFunction, MainScreenBase: MainScreenBase01, renderScreen }
+            break;
+        default:
+            break;
+    }
 }
 
-renderScreen.load(render(screenDisplayed))
+function getScreenDisplayed(){
+    return screenDisplayedModule
+}
 
-function render(screenDisplayed) {
+
+function render(screenDisplayedModule) {
     document.addEventListener("DOMContentLoaded", async () => {
-        document.body.innerHTML = screenDisplayed.MainScreenBase
-        const screen = screenDisplayed.renderScreen()
+        document.body.innerHTML = screenDisplayedModule.MainScreenBase
+        const screen = screenDisplayedModule.renderScreen()
         await screen.init()
-
-        const buttons = screenDisplayed.buttonFunction(screen)
-        controller(buttons)
-        console.log(await data[0]);
     })
 }
 
@@ -41,4 +41,4 @@ function clearDOM() {
 }
 
 
-export { render, screenDisplayed }
+export { render, getScreenDisplayed, updateDisplay }
