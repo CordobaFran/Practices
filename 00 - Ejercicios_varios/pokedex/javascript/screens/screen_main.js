@@ -1,10 +1,6 @@
 let pkmNumber = 1
 let dataTransfer = []
 let MainScreenBase = `
-    <main>
-        <section id="section_pokedex">
-            <div id="div_background">
-                <div id="div_screen">
                     <div id="first_screen">
                         <div id="sprite">
                             <img src="" alt="" id="img_sprite">
@@ -28,25 +24,11 @@ let MainScreenBase = `
                         <div id="pokedex_scroll">
                         </div>
                     </div>
-                </div>
-                <div id="buttons">
-                    <div id="pokedex_controller">
-                        <button id="up">↑</button>
-                        <button id="down">↑</button>
-                        <button id="left">↑</button>
-                        <button id="right">↑</button>
-                    </div>
-                    <div id="pokedex_buttonsAB">
-                        <button id="b">B</button>
-                        <button id="a">A</button>
-                    </div>
-                    <input type="text" placeholder="ingresar Nº" id="input_num-pokedex" hidden="true">
-                </div>
-            </div>
-        </section>
-    </main>
 `
 function renderScreen(fx) {
+
+
+
     const cursor = async (id = 1) => {
         const pkdxNames = document.getElementById("pokedex_names")
 

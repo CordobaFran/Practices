@@ -1,5 +1,4 @@
 let MainScreenBase01 = `
-                <div id="div_screen">
                     <div id="screen_description">
                         <div id="sprite">
                             <img src="" alt="" id="img_sprite">
@@ -23,7 +22,6 @@ let MainScreenBase01 = `
                         <div id="pokedex_scroll">
                         </div>
                     </div>
-                </div>
 `
 
 export { MainScreenBase01 }

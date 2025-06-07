@@ -19,6 +19,5 @@ const screenDisplayedModule = getScreenDisplayed();
 const screen = screenDisplayedModule.renderScreen(updateScreen());
 const buttons = screenDisplayedModule.buttonFunction(screen, updateScreen, updateDisplay);
 
-document.addEventListener("DOMContentLoaded", ()=>{
-    controller(buttons);
-});
+
+controller(buttons);
