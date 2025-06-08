@@ -1,27 +1,51 @@
 let MainScreenBase01 = `
                     <div id="screen_description">
-                        <div id="sprite">
-                            <img src="" alt="" id="img_sprite">
-                        </div>
-                        <div id="pokedex_seen-own">
-                            <div>
-                                <p>SEEN</p>
-                                <p>251</p>
-                            </div>
-                            <div>
-                                <p>OWN</p>
-                                <p>251</p>
-                            </div>
-                        </div>
-                        <div id="arrows">
-                            <img src="./assets/dir_arrow.png" id="arrowUp">
-                            <img src="./assets/dir_arrow.png" id="arrowDn">
-                        </div>
-                        <ul id="pokedex_names">
-                        </ul>
-                        <div id="pokedex_scroll">
-                        </div>
+                        
                     </div>
 `
 
-export { MainScreenBase01 }
+function renderScreen01(fx) {
+
+    const screenId = document.getElementById("div_screen")
+    screenId.innerHTML = MainScreenBase01
+
+    const init = () => {
+
+    }
+
+    return { init }
+}
+
+
+function buttonFunction01(screen, updateScreen, updateDisplay, clearDOM) {
+
+    const up = () => {
+
+    };
+
+    const down = () => {
+
+    };
+
+    const left = () => {
+
+    };
+
+    const right = () => {
+
+    };
+
+    const a = async () => {
+
+    }
+
+    const b = async () => {
+        updateDisplay(1);
+        updateScreen();
+        console.log("hola");
+    }
+
+    return { up, down, left, right, a, b }
+}
+
+export { MainScreenBase01, renderScreen01, buttonFunction01 }

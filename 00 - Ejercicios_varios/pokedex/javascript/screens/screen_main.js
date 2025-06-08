@@ -27,7 +27,8 @@ let MainScreenBase = `
 `
 function renderScreen(fx) {
 
-
+    const screenId = document.getElementById("div_screen")
+    screenId.innerHTML = MainScreenBase
 
     const cursor = async (id = 1) => {
         const pkdxNames = document.getElementById("pokedex_names")
@@ -137,7 +138,7 @@ async function idDetail(id = 1) {
     }
 }
 
-function buttonFunction(screen, updateScreen, updateDisplay) {
+function buttonFunction(screen, updateScreen, updateDisplay, clearDOM) {
 
     const up = () => {
         if (pkmNumber != 1) {
@@ -169,15 +170,14 @@ function buttonFunction(screen, updateScreen, updateDisplay) {
 
     const a = async () => {
         console.log(await idDetail(pkmNumber));
-        setTimeout(() => {
             updateDisplay(2);
             updateScreen();
-        }, 1000);
         return await data(idDetail(pkmNumber)[0])
     }
 
     const b = async () => {
         console.log("b");
+        // clearDOM()
     }
 
     return { up, down, left, right, a, b }

@@ -1,5 +1,5 @@
 import { buttonFunction, MainScreenBase, renderScreen, idDetail } from "./screens/screen_main.js"
-import { MainScreenBase01 } from "./screens/screen_description.js"
+import { buttonFunction01, MainScreenBase01, renderScreen01 } from "./screens/screen_description.js"
 
 // https://pokeapi.co/api/v2/pokemon/
 
@@ -31,18 +31,18 @@ const backgroundScreen = `
 `
 document.body.innerHTML = backgroundScreen
 
-function updateDisplay(newScreen = 2) {
+function updateDisplay(newScreen) {
 
     display = newScreen
 
     switch (display) {
         case 1:
             screenDisplayedModule = { buttonFunction, MainScreenBase, renderScreen }
-            // console.log("case 1", display);
+            console.log("case 1", display);
             break;
         case 2:
-            screenDisplayedModule = { buttonFunction, MainScreenBase: MainScreenBase01, renderScreen }
-            // console.log("case 2", display);
+            screenDisplayedModule = { buttonFunction: buttonFunction01, MainScreenBase: MainScreenBase01, renderScreen: renderScreen01 }
+            console.log("case 2", screenDisplayedModule);
             break;
         default:
             break;
@@ -56,8 +56,8 @@ function getScreenDisplayed() {
 
 function render(screenDisplayedModule) {
     // document.addEventListener("DOMContentLoaded",  async  () => {
-        const screenId = document.getElementById("div_screen")
-        screenId.innerHTML = MainScreenBase
+        // const screenId = document.getElementById("div_screen")
+        // screenId.innerHTML = MainScreenBase
         
         const screen = screenDisplayedModule.renderScreen()
         /* await */ screen.init()
@@ -66,11 +66,10 @@ function render(screenDisplayedModule) {
 }
 
 function clearDOM() {
-    const main = document.getElementById("div_screen")
-    const consoleGB = document.getElementById("div_background")
-    consoleGB.removeChild("main")
-    console.log(main);
+    const main = document.querySelector("#div_screen")
+    const consoleGB = document.querySelector("#first_screen")
+    main.removeChild(consoleGB)
+    console.log(typeof main);
 }
 
-
-export { render, getScreenDisplayed, updateDisplay }
+export { render, getScreenDisplayed, updateDisplay, clearDOM }

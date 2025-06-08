@@ -1,4 +1,4 @@
-import { getScreenDisplayed, updateDisplay, render } from "./screenRender.js"
+import { getScreenDisplayed, updateDisplay, render, clearDOM } from "./screenRender.js"
 import { controller } from "./controller.js"
 import { buttonFunction } from "./screens/screen_main.js"
 
@@ -10,6 +10,7 @@ document.addEventListener("keydown", (el) => el.preventDefault());
 function updateScreen(){
     const screenDisplayedModule = getScreenDisplayed();
     render(screenDisplayedModule);
+    return render(screenDisplayedModule)
 };
 
 updateDisplay(1); //start screen N°1
@@ -17,7 +18,7 @@ updateScreen(); //first screen render
 
 const screenDisplayedModule = getScreenDisplayed();
 const screen = screenDisplayedModule.renderScreen(updateScreen());
-const buttons = screenDisplayedModule.buttonFunction(screen, updateScreen, updateDisplay);
+const buttons = screenDisplayedModule.buttonFunction(screen, updateScreen, updateDisplay, clearDOM);
 
 
 controller(buttons);

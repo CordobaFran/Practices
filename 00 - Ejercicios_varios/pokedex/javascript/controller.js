@@ -18,7 +18,7 @@ function controller(screenEvent) {
         })
     }
 
-    const buttonDownListener = async () => {
+    const buttonDownListener = () => {
         btnDown.addEventListener("mousedown", () => arrowKeys("down", screenEvent.down))
         btnDown.addEventListener("mouseup", () => arrowKeys("stop"))
         document.addEventListener("keydown", (ev) => {
