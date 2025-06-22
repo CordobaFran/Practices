@@ -17,7 +17,7 @@ function renderScreen01(fx) {
 }
 
 
-function buttonFunction01(screen, updateScreen, updateDisplay, clearDOM) {
+function buttonFunction01(updateScreen, updateDisplay, clearDOM) {
 
     const up = () => {
 
@@ -42,7 +42,6 @@ function buttonFunction01(screen, updateScreen, updateDisplay, clearDOM) {
     const b = async () => {
         updateDisplay(1);
         updateScreen();
-        console.log("hola");
     }
 
     return { up, down, left, right, a, b }

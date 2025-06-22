@@ -38,11 +38,9 @@ function updateDisplay(newScreen) {
     switch (display) {
         case 1:
             screenDisplayedModule = { buttonFunction, MainScreenBase, renderScreen }
-            console.log("case 1", display);
             break;
         case 2:
             screenDisplayedModule = { buttonFunction: buttonFunction01, MainScreenBase: MainScreenBase01, renderScreen: renderScreen01 }
-            console.log("case 2", screenDisplayedModule);
             break;
         default:
             break;
@@ -53,23 +51,15 @@ function getScreenDisplayed() {
     return screenDisplayedModule
 }
 
-
 function render(screenDisplayedModule) {
-    // document.addEventListener("DOMContentLoaded",  async  () => {
-        // const screenId = document.getElementById("div_screen")
-        // screenId.innerHTML = MainScreenBase
-        
-        const screen = screenDisplayedModule.renderScreen()
+         const screen = screenDisplayedModule.renderScreen()
         /* await */ screen.init()
-        console.log("render", display);
-    // })
 }
 
 function clearDOM() {
     const main = document.querySelector("#div_screen")
-    const consoleGB = document.querySelector("#first_screen")
+    const consoleGB = main.childNodes[1]
     main.removeChild(consoleGB)
-    console.log(typeof main);
 }
 
 export { render, getScreenDisplayed, updateDisplay, clearDOM }

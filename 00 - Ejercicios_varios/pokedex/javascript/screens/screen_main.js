@@ -76,41 +76,38 @@ function renderScreen(fx) {
 
     const getPkmNames = async () => {
         const pkdxNames = document.getElementById("pokedex_names")
+        try {
+            const res = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=251`)
+            const data = await res.json()
 
-        return await fetch(`https://pokeapi.co/api/v2/pokemon?limit=251`)
-            .then(res => res.json())
-            .then(data => {
-                let names = []
-                data.results.forEach((el, index) => {
-                    const li = document.createElement("li")
-                    const liNames = document.createElement("span")
-                    // const liNum = document.createElement("span")
-                    const liCaptured = document.createElement("img")
+            let names = []
+            data.results.forEach((el, index) => {
+                const li = document.createElement("li")
+                const liNames = document.createElement("span")
+                // const liNum = document.createElement("span")
+                const liCaptured = document.createElement("img")
+                // liNum.textContent = (index + 1).toString().padStart(3, "0")
+                // li.appendChild(liNum)
+                liCaptured.src = "./assets/capturedBall.png"
+                liCaptured.id = "capturedImg"
+                liNames.textContent = el.name.toUpperCase()
+                liNames.id = "listName"
+                li.append(liCaptured)
+                li.append(liNames)
+                li.value = index + 1
+    
+                pkdxNames.appendChild(li)
+                names.push({ name: el.name, url: el.url })
+            });
+        } catch (error) {
+            console.log("error", error)
+        }
 
-                    // liNum.textContent = (index + 1).toString().padStart(3, "0")
-                    // li.appendChild(liNum)
-                    liCaptured.src = "./assets/capturedBall.png"
-                    liCaptured.id = "capturedImg"
-                    liNames.textContent = el.name.toUpperCase()
-                    liNames.id = "listName"
-                    li.append(liCaptured)
-                    li.append(liNames)
-                    li.value = index + 1
-
-                    pkdxNames.appendChild(li)
-                    names.push({ name: el.name, url: el.url })
-                });
-            })
-            .catch(err => console.log("error", err))
     }
 
     const init = async () => {
         await getPkmNames()
         await renderImg()
-    }
-
-    const load = () => {
-        return fx
     }
 
     const clear = async () => {
@@ -119,7 +116,7 @@ function renderScreen(fx) {
         consoleGB.removeChild(main)
     }
 
-    return { init, load, renderImg, clear }
+    return { init, renderImg, clear }
 }
 
 async function data(params) {
@@ -138,7 +135,9 @@ async function idDetail(id = 1) {
     }
 }
 
-function buttonFunction(screen, updateScreen, updateDisplay, clearDOM) {
+function buttonFunction(updateScreen, updateDisplay, clearDOM) {
+
+    const screen = renderScreen()
 
     const up = () => {
         if (pkmNumber != 1) {

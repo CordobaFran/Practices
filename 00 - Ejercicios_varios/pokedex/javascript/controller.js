@@ -1,6 +1,11 @@
 let pressed = null
+let screenEvent
 
-function controller(screenEvent) {
+function screenEventUpdate(newButton){
+    screenEvent = newButton
+}
+
+function controller() {
 
     let btnUp = document.getElementById("up")
     let btnDown = document.getElementById("down")
@@ -47,6 +52,7 @@ function controller(screenEvent) {
 
     const buttonAListener = () => {
         let assignedA = "a"
+        console.log(screenEvent);
         btnA.addEventListener("click", () => { arrowKeys("a", screenEvent.a) })
         document.addEventListener("keydown", (ev) => {
             ev.key === assignedA ? arrowKeys("a", screenEvent.a) : null;
@@ -136,4 +142,4 @@ async function arrowKeys(key, event) {
 }
 
 
-export { controller }
+export { controller, screenEventUpdate }
